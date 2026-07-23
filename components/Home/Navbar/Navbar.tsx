@@ -7,6 +7,7 @@ import { navLinks } from './nav-links';
 import MobileMenu from './MobileMenu';
 import Logo3D from '../logo/logo3d';
 import LogoMark from '../logo/logomark';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,8 +32,11 @@ export default function Navbar() {
             : 'border-transparent bg-transparent'
         }`}
       >
+        
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <Link href="/">
           <LogoMark/>
+          </Link>
 
           <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (

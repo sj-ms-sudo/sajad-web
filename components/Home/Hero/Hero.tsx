@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen items-center bg-[radial-gradient(ellipse_at_50%_0%,#0d1114_0%,#050505_60%)]"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_0%,#0d1114_0%,#050505_60%)]"
     >
       <HeroParticles />
 
@@ -59,7 +59,7 @@ export default function Hero() {
             className="mt-9 flex flex-wrap items-center gap-4"
           >
             <a
-              href="#work"
+              href="/works"
               className="flex items-center gap-2 rounded-full bg-gradient-to-br from-[#00e5ff] to-[#1fefc4] px-6 py-3 text-sm font-semibold text-[#050505] transition-transform hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(0,229,255,0.35)]"
             >
               View my work

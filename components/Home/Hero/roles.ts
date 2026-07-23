@@ -1,6 +1,9 @@
 export const roles: string[] = [
-  'Full-Stack Engineer',
-  'Offensive Security Enthusiast',
-  'Systems Builder',
-  'C++ Tinkerer',
+  'Full Stack Developer',
+  'Backend Developer',
+  'Frontend Developer',
+  'AI/ML Engineer',
+  'Computer Vision Engineer',
+  'Security Engineer',
+  'AppSec'
 ];
