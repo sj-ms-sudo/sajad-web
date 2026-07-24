@@ -7,31 +7,31 @@ export interface FocusItem {
 
 export const focusItems: FocusItem[] = [
   {
+    icon: 'academy',
+    tag: 'Algorithms',
+    title: 'LeetCode & DSA',
+    description:
+      'Practicing data structures and algorithms daily, with a focus on problem-solving patterns and interview preparation.',
+  },
+  {
     icon: 'shield',
     tag: 'Security',
-    title: 'Offensive security roadmap',
+    title: 'Capture The Flag (CTFs)',
     description:
-      'Working through Stages 0–11: web exploitation, network enumeration, AD attacks, binary exploitation, and cloud security.',
+      'Solving CTF challenges across web, binary exploitation, reverse engineering, and cryptography to strengthen offensive security skills.',
   },
   {
     icon: 'search',
-    tag: 'AI/ML',
-    title: 'face_cluster → smart visual search',
+    tag: 'Web Security',
+    title: 'PortSwigger Web Security Academy',
     description:
-      'Evolving the face clustering engine with YOLOv8, CLIP embeddings, and image inpainting for smarter visual search.',
-  },
-  {
-    icon: 'academy',
-    tag: 'Product',
-    title: 'Onverse Digital Academy',
-    description:
-      'Building out onverse.in end to end — SSR marketing site, curriculum, and the brand system behind it.',
+      'Working through hands-on labs covering authentication flaws, XSS, SQL injection, SSRF, deserialization, and advanced web exploitation.',
   },
   {
     icon: 'cpu',
-    tag: 'Low-level',
-    title: 'Vulnerable C++ service',
+    tag: 'Systems',
+    title: 'Raw Packet Sniffer in C',
     description:
-      'A deliberately vulnerable network service with a documented exploit chain, from enumeration to privilege escalation.',
+      'Building a Linux raw socket packet sniffer from scratch to deepen understanding of Ethernet, IP, TCP/UDP, and low-level networking.',
   },
 ];

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import SplitGalleryItem from './SplitGalleryItem';
 import { worksPageData } from './works-data';
+import Link from 'next/link';
 
 /**
  * Infinite vertical scroll: renders 3 copies of the dataset back to back
@@ -55,10 +56,20 @@ export default function SplitScrollGallery() {
 
   return (
     <section className="relative bg-[#050505]">
+      
       <div ref={containerRef} className="scrollbar-hide h-screen w-full overflow-y-scroll">
         {loopedItems.map((work, i) => (
-          <SplitGalleryItem key={`${work.title}-${i}`} work={work} containerRef={containerRef} reversed={i % 2 === 1} />
-        ))}
+  <Link
+    key={`${work.title}-${i}`}
+    href={work.href}
+  >
+    <SplitGalleryItem
+      work={work}
+      containerRef={containerRef}
+      reversed={i % 2 === 1}
+    />
+  </Link>
+))}
       </div>
 
       {/* fixed corner hint, not part of scroll loop */}

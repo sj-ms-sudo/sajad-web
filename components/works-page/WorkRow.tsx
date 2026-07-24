@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import TiltCard from '../Home/shared/TiltCard';
 import type { WorkEntry } from './works-data';
+import Image from 'next/image';
 
 interface WorkRowProps {
   work: WorkEntry;
@@ -35,7 +36,13 @@ export default function WorkRow({ work, reversed = false }: WorkRowProps) {
             style={{ y: imageY }}
             className="absolute inset-[-6%] flex items-center justify-center bg-gradient-to-br from-white/[0.05] to-transparent text-xs uppercase tracking-widest text-[#5b6270]"
           >
-            IMG
+            <Image
+              src={work.image}
+              alt = {work.title}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
           </motion.div>
           <div className="pointer-events-none absolute inset-0 border border-[#ff4d2e]/15" />
         </TiltCard>

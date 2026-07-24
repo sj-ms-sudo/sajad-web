@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import TiltCard from '../shared/TiltCard';
 import { worksData } from './works-data';
+import Image from 'next/image';
 
 export default function FeaturedWorks() {
   return (
@@ -40,9 +41,15 @@ export default function FeaturedWorks() {
             >
               <TiltCard as="a" href={work.href} className="flex h-full flex-col p-7">
                 {/* IMG placeholder — swap for <Image src={work.image} .../> when you have real screenshots */}
-                <div className="mb-6 flex h-36 w-full items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent text-[11px] uppercase tracking-widest text-[#5b6270]">
-                  IMG
-                </div>
+                <div className="relative mb-6 h-36 w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent">
+                <Image
+                  src={work.image}
+                  alt={work.title}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
 
                 <div className="mb-5 flex items-center justify-between">
                   <span className="font-display text-[13px] text-[#5b6270]">{work.index}</span>

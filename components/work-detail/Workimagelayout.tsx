@@ -2,48 +2,45 @@
 
 import WorkImageTile from './Workimagetile';
 
-export default function WorkImageLayout({ images }: { images: string[] }) {
-  const count = images.length;
+// Deterministic "scattered" pattern — tuned by hand so it always looks
+// intentional, never actually random. Cycles if more images are given.
+const PATTERN = [
+  { col: 'sm:col-span-4', rotate: '-rotate-1', translate: 'sm:translate-y-2', z: 'z-20' },
+  { col: 'sm:col-span-2', rotate: 'rotate-2', translate: 'sm:-translate-y-3', z: 'z-10' },
+  { col: 'sm:col-span-3', rotate: 'rotate-1', translate: 'sm:translate-y-6', z: 'z-10' },
+  { col: 'sm:col-span-3', rotate: '-rotate-2', translate: 'sm:-translate-y-2', z: 'z-10' },
+  { col: 'sm:col-span-2', rotate: '-rotate-1', translate: 'sm:translate-y-4', z: 'z-10' },
+  { col: 'sm:col-span-4', rotate: 'rotate-1', translate: 'sm:-translate-y-4', z: 'z-10' },
+];
 
-  // 1 image — single full-width hero tile
-  if (count === 1) {
-    return (
-      <div className="mx-auto max-w-5xl px-6">
-        <WorkImageTile src={images[0]} className="aspect-[16/9] w-full" />
-      </div>
-    );
-  }
+export default function WorkImageLayout({
+  images,
+  alt = '',
+}: {
+  images: string[];
+  alt?: string;
+}) {
+  if (images.length === 0) return null;
 
-  // 2 images — even side-by-side split
-  if (count === 2) {
-    return (
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 px-6 sm:grid-cols-2">
-        {images.map((src, i) => (
-          <WorkImageTile key={i} src={src} className="aspect-[4/3] w-full" />
-        ))}
-      </div>
-    );
-  }
-
-  // 3 images — one large + two stacked (bento), reads as the primary shot + supporting detail
-  if (count === 3) {
-    return (
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 px-6 sm:grid-cols-[1.4fr_1fr]">
-        <WorkImageTile src={images[0]} className="aspect-[4/5] w-full sm:aspect-auto sm:h-full" />
-        <div className="grid grid-rows-2 gap-5">
-          <WorkImageTile src={images[1]} className="aspect-[4/3] w-full sm:aspect-auto sm:h-full" />
-          <WorkImageTile src={images[2]} className="aspect-[4/3] w-full sm:aspect-auto sm:h-full" />
-        </div>
-      </div>
-    );
-  }
-
-  // 4+ images — falls back to a simple wrapping grid rather than breaking
   return (
-    <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
-      {images.map((src, i) => (
-        <WorkImageTile key={i} src={src} className="aspect-[4/3] w-full" />
-      ))}
+    <div className="bg-[#050914] mx-auto max-w-5xl px-6 py-8">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-6 sm:gap-x-6 sm:gap-y-10">
+        {images.map((src, i) => {
+          const p = PATTERN[i % PATTERN.length];
+          return (
+            <div
+              key={src}
+              className={`${p.col} ${p.z} ${p.translate} transition-transform duration-500`}
+            >
+              <WorkImageTile
+                src={src}
+                alt={alt}
+                className={`aspect-[4/3] w-full ${p.rotate} transition-transform duration-500 hover:!rotate-0 hover:scale-[1.03] hover:z-30`}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

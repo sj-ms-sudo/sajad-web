@@ -3,6 +3,7 @@
 import { useRef, type RefObject } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import type { WorkEntry } from './works-data';
+import Image from 'next/image';
 
 interface SplitGalleryItemProps {
   work: WorkEntry;
@@ -42,7 +43,13 @@ export default function SplitGalleryItem({ work, containerRef, reversed = false 
           style={{ y: imageY, scale }}
           className="absolute inset-[-10%] flex items-center justify-center bg-gradient-to-br from-white/[0.05] to-transparent text-xs uppercase tracking-widest text-[#5b6270]"
         >
-          IMG
+          <Image
+                        src={work.image}
+                        alt = {work.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
         </motion.div>
         <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_100px_30px_rgba(0,0,0,0.6)]" />
       </div>

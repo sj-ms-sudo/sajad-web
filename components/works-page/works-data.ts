@@ -7,22 +7,34 @@ export interface WorkEntry {
   description: string;
   stack: string[];
   href: string;
-  image?: string;
+  image: string;
 }
 
 export const worksPageData: WorkEntry[] = [
   {
     index: '01',
-    year: '2024',
+    year: '2026',
     tag: 'Platform',
-    title: 'Psyra Booking Engine',
-    role: 'Full-stack development',
+    title: 'Psyra Psychologist Portal',
+    role: 'Full-stack development — availability system, auth, payments, dashboard UI',
     description:
-      'Psychologist booking & payments system with Razorpay webhooks, atomic slot locking, and a cron-based expiry job to keep availability honest under load.',
-    stack: ['NestJS', 'MongoDB', 'Razorpay', 'Cron'],
-    href: '#',
-    image: '/work/psyra.jpg',
+      'Psychologist scheduling & booking system with OTP auth, a 24-slot daily availability grid, and Razorpay webhook-driven payment-to-slot booking.',
+    stack: [
+      'NestJS',
+      'MongoDB',
+      'Mongoose',
+      'JWT',
+      'Razorpay',
+      'Next.js',
+      'React 19',
+      'Tailwind CSS',
+      'Radix UI',
+      '@nestjs/schedule',
+    ],
+    href: '/works/psyra-psychologist-portal',
+    image: '/works/psyra_main_image.jpg',
   },
+
   {
     index: '02',
     year: '2024',
@@ -84,3 +96,4 @@ export const worksPageData: WorkEntry[] = [
     image: '/work/ssh-sentinel.jpg',
   },
 ];
+
