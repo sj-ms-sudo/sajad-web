@@ -1,0 +1,21 @@
+.track {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+  z-index: 50;
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+.thumb {
+  position: absolute;
+  left: -2px;
+  width: 6px;
+  height: 56px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-soft);
+  transition: background 0.5s ease;
+}
